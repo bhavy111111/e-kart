@@ -150,5 +150,6 @@ MESSAGE_TAGS = {
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'your_gmail@gmail.com'
-
+#Email Host Password , you will get from google app password
+EMAIL_HOST_PASSWORD ='xxxxxx'
 EMAIL_USE_TLS = True
