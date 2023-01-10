@@ -41,9 +41,9 @@ class MyAccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser):
-    first_name      = models.CharField(max_length=50)
+    first_name      = models.CharField(max_length=50 )
     last_name       = models.CharField(max_length=50)
-    username        = models.CharField(max_length=50, unique=True)
+    username        = models.CharField(max_length=50, unique=True )
     email           = models.EmailField(max_length=100, unique=True)
     phone_number    = models.CharField(max_length=50)
 
@@ -71,3 +71,20 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, add_label):
         return True
+class UserProfile(models.Model):
+    #One profile for one account
+    #foreign key - One Profile for multiple account
+    user = models.OneToOneField(Account , on_delete = models.CASCADE , primary_key = True,)
+    address_line_1 = models.CharField(max_length=100 , blank = True)
+    address_line_2 = models.CharField(max_length=100 , blank=True)
+    #Will go to media directory
+    profile_picture = models.ImageField(blank=True , upload_to = 'userprofile')
+    city = models.CharField(blank = True,max_length=100)
+    state = models.CharField(blank = True,max_length=100)
+    country = models.CharField(blank = True,max_length=100)
+
+    def __str__(self):
+        print(id)
+        return self.id
+    def __str__(self):
+        return self.user.first_name

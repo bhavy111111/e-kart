@@ -1,0 +1,11 @@
+<!-- As we have to render of html in email format-->
+{% autoescape off %}
+Hi {{user.first_name}},
+
+Please click on below link to reset your password
+http://{{domain}}{% url 'reset_verification' uidb64=uid token=token %}
+
+If you think it's not you
+Please Ignore the mail
+
+{% endautoescape  %}
